@@ -5,7 +5,7 @@ import img from '../../assets/ProjectImages/2ndshop.png'
 import './CardSlider.css'
 
 const ProjectCard = ({ classGiven, image, message, title, extras, btn1Content, btn2Content, btn1Link, btn2Link }) => {
-    image = image.replace("./src/","/src/")
+    // image = image.replace("./src/","/src/")
     console.log(image)
     return (
       <div className={`${classGiven} transition-all duration-1000 bg-[#111111] inline-block my-5 min-h-[16rem] max-h-content pb-4 w-[15rem] mx-10 border-[0.1px] border-[#272727] rounded-md`}>

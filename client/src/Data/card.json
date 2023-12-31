@@ -4,7 +4,7 @@
         {
             "message" : "A portal for whole Medical Community",
             "title" : "Cyber Chikitsa",
-            "image": "./src/assets/ProjectImages/cyber-chikitsa.png",
+            "image": "/static/ProjectImages/cyber-chikitsa.png",
             "extras": "UI/UX, Figma, Photoshop",
             "btn1-content": "Figma",
             "btn1-link": "https://www.figma.com/file/aMQ56tIDlGBHi5HWaDbpIZ/Cyber-Chikitsa?type=design&node-id=42%3A44&mode=design&t=svrfft4QW0MFK7k9-1",
@@ -14,7 +14,7 @@
         {
             "message" : "A C2C buying and selling company.",
             "title" : "2nd Shop",
-            "image": "./src/assets/ProjectImages/2ndshop.png",
+            "image": "/static/ProjectImages/2ndshop.png",
             "extras": "TailwindCSS, Razorpay, MERN and many more",
             "btn1-content": "GitHub",
             "btn1-link": "https://github.com/KroNicalKODER/2ndShop",
@@ -25,7 +25,7 @@
         {
             "message" : "A google Extension build to increase your productivity",
             "title" : "Workify-Extension",
-            "image": "./src/assets/ProjectImages/workify.png",
+            "image": "/static/ProjectImages/workify.png",
             "extras": "HTML, CSS, JS, chrome api's",
             "btn1-content": "GitHub",
             "btn1-link": "https://github.com/KroNicalKODER/Workify-Extension",
@@ -35,7 +35,7 @@
         {
             "message" : "A Modern AI+Blockchain Supporting Social Media Platform",
             "title" : "Trust Stamp",
-            "image": "./src/assets/ProjectImages/TrustStamp.png",
+            "image": "/static/ProjectImages/TrustStamp.png",
             "extras": "UI/UX, Figma, Photoshop",
             "btn1-content": "Figma",
             "btn1-link": "https://www.figma.com/file/GBOkAYrcFiNhHXP1VVFqh3/TrustStamp?type=design&node-id=0%3A1&mode=design&t=mcgdksu5949T3wPh-1",
@@ -45,7 +45,7 @@
         {
             "message" : "A food Ordering Portal",
             "title" : "Eat Cheap (80% Done)",
-            "image": "./src/assets/ProjectImages/eat-cheap.png",
+            "image": "/static/ProjectImages/eat-cheap.png",
             "extras": "HTML, CSS, JS, PHP, mysql, XAMPP, and many more",
             "btn1-content": "GitHub",
             "btn1-link": "https://github.com/KroNicalKODER/HTML-CSS-JS-PHP__EAT-CHEAP",
@@ -55,7 +55,7 @@
         {
             "message" : "Several C++ Projects",
             "title" : "C++ Projects",
-            "image": "./src/assets/ProjectImages/C++ Projects.png",
+            "image": "/static/ProjectImages/C++ Projects.png",
             "extras": "DSA, Data Handling, File Management",
             "btn1-content": "GitHub",
             "btn1-link": "https://github.com/KroNicalKODER/CPP-projects",

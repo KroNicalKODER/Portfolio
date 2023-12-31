@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 const Bubble = () => {
     const [htmlContent,setHtmlContent] = useState('')
     useEffect(()=>{
-        fetch('./src/components/Animations/bubbles/index.html')
+        fetch('/static/bubbles/index.html')
         .then(response=>response.text())
         .then(data => setHtmlContent(data))
         .catch(error => console.error('Error: ',error))
