@@ -1,0 +1,20 @@
+{
+  "data":  [
+        {
+            "t1": "FULL STACK",
+            "t2": "Developer"
+        },
+        {
+            "t1": "Data Structures",
+            "t2": "Algorithms"
+        },
+        {
+            "t1": "GRAPHICS",
+            "t2": "Designer"
+        },
+        {
+            "t1": "BlockChain/AI-ML",
+            "t2": "Enthusiast"
+        }
+    ]
+}

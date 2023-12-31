@@ -1,0 +1,39 @@
+
+
+.wrapper{
+    /* border: 2px solid lime; */
+    height: 50vh;
+    width: 67vw;
+    overflow: hidden;
+}
+
+.container {
+    display: inline-flex;
+    align-items: center;
+    transition: all 1s linear;
+}
+
+.cards{
+    width: 13rem;
+    height: 18rem;
+    color: aliceblue;
+    background-color: rgb(31, 31, 31);
+    border: 1px solid rgb(46, 46, 46);
+    display: inline-block;
+    margin: 0.7rem 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    transition: all 1s linear;    
+}
+
+.selected{
+    height: 20rem;
+    width: 15rem;
+}
+
+button{
+    border-radius: 10px;
+    padding: 1px 4px;
+}

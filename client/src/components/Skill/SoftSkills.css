@@ -1,0 +1,71 @@
+.wrapper-skills {
+    display: flex;
+  }
+
+  .container-skills {
+    display: flex;
+    position: relative;
+    height: inherit;
+    width: inherit;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .bubble-wrapper-skills {
+    background-image: url('./images/planet-2.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 0%;
+    background-clip: border-box;
+    width: 450px;
+    border-radius: 50%;
+    margin: 8px;
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    animation: up-down 80s linear infinite;
+  }
+
+  .dot2-skills {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+  }
+
+  .dot2-skills:nth-child(1) {
+    transform: translateY(-160px);
+  }
+
+  .dot2-skills:nth-child(2) {
+    transform: rotate(72deg) translateY(-160px);
+  }
+
+  .dot2-skills:nth-child(3) {
+    transform: rotate(144deg) translateY(-160px);
+  }
+
+  .dot2-skills:nth-child(4) {
+    transform: rotate(216deg) translateY(-160px);
+  }
+
+  .dot2-skills:nth-child(5) {
+    transform: rotate(288deg) translateY(-160px);
+  }
+
+  @keyframes up-down {
+    to {
+      rotate: 360deg;
+    }
+  }
+
+  @keyframes up-down2 {
+    0%,100%{
+      transform: translateY(-20px);
+    }
+    50%{
+      transform: translateY(20px);
+    }
+  }

@@ -1,0 +1,80 @@
+.wrapper-designing {
+    display: flex;
+  }
+  
+  .container-designing {
+    display: flex;
+    position: relative;
+    height: inherit;
+    width: inherit;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .bubble-wrapper-designing {
+    background-image: url('./images/planet-2.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 0%;
+    background-clip: border-box;
+    width: 450px;
+    border-radius: 50%;
+    margin: 8px;
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    animation: up-down 80s linear infinite;
+  }
+  
+  .dot2-designing {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+  }
+  
+  .dot2-designing:nth-child(1) {
+    transform: translateY(-160px);
+  }
+  
+  .dot2-designing:nth-child(2) {
+    transform: rotate(51.42deg) translateY(-160px);
+  }
+  
+  .dot2-designing:nth-child(3) {
+    transform: rotate(102.85deg) translateY(-160px);
+  }
+  
+  .dot2-designing:nth-child(4) {
+    transform: rotate(154.28deg) translateY(-160px);
+  }
+  
+  .dot2-designing:nth-child(5) {
+    transform: rotate(205.71deg) translateY(-160px);
+  }
+  
+  .dot2-designing:nth-child(6) {
+    transform: rotate(257.14deg) translateY(-160px);
+  }
+  
+  .dot2-designing:nth-child(7) {
+    transform: rotate(308.57deg) translateY(-160px);
+  }
+  
+  @keyframes up-down {
+    to {
+      rotate: 360deg;
+    }
+  }
+  
+  @keyframes up-down2 {
+    0%,100%{
+      transform: translateY(-20px);
+    }
+    50%{
+      transform: translateY(20px);
+    }
+  }
+  

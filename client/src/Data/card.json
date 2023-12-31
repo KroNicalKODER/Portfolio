@@ -1,0 +1,66 @@
+{
+    "data" :
+    [
+        {
+            "message" : "A portal for whole Medical Community",
+            "title" : "Cyber Chikitsa",
+            "image": "./src/assets/ProjectImages/cyber-chikitsa.png",
+            "extras": "UI/UX, Figma, Photoshop",
+            "btn1-content": "Figma",
+            "btn1-link": "https://www.figma.com/file/aMQ56tIDlGBHi5HWaDbpIZ/Cyber-Chikitsa?type=design&node-id=42%3A44&mode=design&t=svrfft4QW0MFK7k9-1",
+            "btn2-content": "Figma",
+            "btn2-link": "https://www.figma.com/proto/aMQ56tIDlGBHi5HWaDbpIZ/Cyber-Chikitsa?page-id=0%3A1&type=design&node-id=42-186&viewport=706%2C499%2C0.4&t=14mJq27NqfkxpEjH-1&scaling=scale-down&starting-point-node-id=42%3A258&show-proto-sidebar=1&mode=design"
+        },
+        {
+            "message" : "A C2C buying and selling company.",
+            "title" : "2nd Shop",
+            "image": "./src/assets/ProjectImages/2ndshop.png",
+            "extras": "TailwindCSS, Razorpay, MERN and many more",
+            "btn1-content": "GitHub",
+            "btn1-link": "https://github.com/KroNicalKODER/2ndShop",
+            "btn2-content": "GitHub",
+            "btn2-link": "https://github.com/KroNicalKODER/2ndShop"
+        },
+        
+        {
+            "message" : "A google Extension build to increase your productivity",
+            "title" : "Workify-Extension",
+            "image": "./src/assets/ProjectImages/workify.png",
+            "extras": "HTML, CSS, JS, chrome api's",
+            "btn1-content": "GitHub",
+            "btn1-link": "https://github.com/KroNicalKODER/Workify-Extension",
+            "btn2-content": "GitHub",
+            "btn2-link": "https://github.com/KroNicalKODER/Workify-Extension"
+        },
+        {
+            "message" : "A Modern AI+Blockchain Supporting Social Media Platform",
+            "title" : "Trust Stamp",
+            "image": "./src/assets/ProjectImages/TrustStamp.png",
+            "extras": "UI/UX, Figma, Photoshop",
+            "btn1-content": "Figma",
+            "btn1-link": "https://www.figma.com/file/GBOkAYrcFiNhHXP1VVFqh3/TrustStamp?type=design&node-id=0%3A1&mode=design&t=mcgdksu5949T3wPh-1",
+            "btn2-content": "Figma",
+            "btn2-link": "https://www.figma.com/proto/GBOkAYrcFiNhHXP1VVFqh3/TrustStamp?page-id=0%3A1&type=design&node-id=68-2&viewport=-2536%2C-637%2C0.42&t=glGNfoVgyNCFWVxl-1&scaling=scale-down&starting-point-node-id=1%3A3&mode=design"
+        },
+        {
+            "message" : "A food Ordering Portal",
+            "title" : "Eat Cheap (80% Done)",
+            "image": "./src/assets/ProjectImages/eat-cheap.png",
+            "extras": "HTML, CSS, JS, PHP, mysql, XAMPP, and many more",
+            "btn1-content": "GitHub",
+            "btn1-link": "https://github.com/KroNicalKODER/HTML-CSS-JS-PHP__EAT-CHEAP",
+            "btn2-content": "GitHub",
+            "btn2-link": "https://github.com/KroNicalKODER/HTML-CSS-JS-PHP__EAT-CHEAP"
+        },
+        {
+            "message" : "Several C++ Projects",
+            "title" : "C++ Projects",
+            "image": "./src/assets/ProjectImages/C++ Projects.png",
+            "extras": "DSA, Data Handling, File Management",
+            "btn1-content": "GitHub",
+            "btn1-link": "https://github.com/KroNicalKODER/CPP-projects",
+            "btn2-content": "GitHub",
+            "btn2-link": "https://github.com/KroNicalKODER/CPP-projects"
+        }
+    ]
+}

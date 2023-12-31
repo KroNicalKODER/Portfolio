@@ -1,0 +1,109 @@
+.wrapper{
+    display: flex;
+    margin-left: 3%;
+    /* border: 2px solid red; */
+}
+
+.container {
+    display: flex;
+    position: relative;
+    height: inherit;
+    width: inherit;
+    justify-content: center;
+    /* border: 2px solid red; */
+    align-items: center;
+}
+
+.bubble-wrapper {
+    border: 2px solid white;
+    border-radius: 50%;
+    margin: 8px;
+    height: 150px;
+    width: 140px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    animation: up-down 2s ease-in-out infinite;
+}
+
+#bubble-wrapper-1 {
+    animation-delay: 0s;
+}
+
+#bubble-wrapper-2 {
+    animation-delay: -0.5s;
+}
+
+#bubble-wrapper-3 {
+    animation-delay: -1s;
+}
+
+#bubble-wrapper-4 {
+    animation-delay: -1.5s;
+}
+
+.dot {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: cyan;
+    margin: 1.5%;
+    transform-origin: center;
+    box-shadow: 0 0 10px cyan, 0 0 20px cyan, 0 0 30px cyan, 0 0 40px cyan; /* Add glow effect */
+}
+.dot2 {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgb(0, 255, 42);
+    margin: 120px; /* Adjust as needed */
+}
+
+@keyframes up-down {
+    0% {
+        transform: translateY(30px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(0px) rotate(180deg);
+    }
+    100%{
+        transform: translateY(30px) rotate(360deg);
+    }
+}
+@keyframes up-down1 {
+    0%,100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+}
+
+.images {
+    position: absolute;
+}
+
+.image-wrapper{
+    height: 80px;
+    width: 80px;
+    position: absolute;
+    animation: up-down1 2.5s ease-in-out infinite;
+    /* border: 2px solid green; */
+    
+}
+
+#image-1{
+    animation-delay: 0s;
+}
+
+#image-2{
+    animation-delay: -0.5s;
+}
+#image-3{
+    animation-delay: -1s;
+}
+#image-4{
+    animation-delay: -1.5s;
+}

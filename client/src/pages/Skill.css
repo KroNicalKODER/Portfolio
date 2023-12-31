@@ -1,0 +1,89 @@
+@keyframes moveText {
+    to{
+        height: 100%;
+    }
+}
+.AnimationHover{
+    cursor: pointer;
+    font-size: 2.25rem;
+    line-height: 2.25rem;
+    font-weight: 800;
+    position: relative;
+    ::after{
+        content: "DEVELOPMENT";
+        position: absolute;
+        height: 0px;
+        overflow: hidden;
+        color:rgb(249, 192, 255);
+        top: 0;
+        left: 0;
+    }
+    &:hover{
+        ::after{
+            animation: moveText 0.5s linear forwards;
+        }
+    }
+}
+.AnimationHover-Graphic{
+    cursor: pointer;
+    font-size: 2.25rem;
+    line-height: 2.25rem;
+    font-weight: 800;
+    position: relative;
+    ::after{
+        content: "GRAPHIC DESIGNING";
+        position: absolute;
+        height: 0px;
+        overflow: hidden;
+        color:rgb(249, 192, 255);
+        top: 0;
+        left: 0;
+    }
+    &:hover{
+        ::after{
+            animation: moveText 0.5s linear forwards;
+        }
+    }
+}
+.AnimationHover-Programming{
+    cursor: pointer;
+    font-size: 2.25rem;
+    line-height: 2.25rem;
+    font-weight: 800;
+    position: relative;
+    ::after{
+        content: "PROGRAMMING LANGUAGES";
+        position: absolute;
+        height: 0px;
+        overflow: hidden;
+        color:rgb(249, 192, 255);
+        top: 0;
+        left: 0;
+    }
+    &:hover{
+        ::after{
+            animation: moveText 0.5s linear forwards;
+        }
+    }
+}
+.AnimationHover-Soft{
+    cursor: pointer;
+    font-size: 2.25rem;
+    line-height: 2.25rem;
+    font-weight: 800;
+    position: relative;
+    ::after{
+        content: "ALSO KNOWS";
+        position: absolute;
+        height: 0px;
+        overflow: hidden;
+        color:rgb(249, 192, 255);
+        top: 0;
+        left: 0;
+    }
+    &:hover{
+        ::after{
+            animation: moveText 0.5s linear forwards;
+        }
+    }
+}

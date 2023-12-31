@@ -1,0 +1,16 @@
+.selected{
+    height: 42vh !important;
+    width: 20vw !important;
+    margin: 0.5rem 1.5rem !important;
+    transition: all 1s !important;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+/* For IE, Edge and Firefox */
+.scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
