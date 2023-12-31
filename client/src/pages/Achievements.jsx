@@ -168,13 +168,13 @@ const Achievements = () => {
               initial={{x:-400, opacity: 0}}
               animate={{x:0, opacity: 1, transition: {duration: 1, ease: 'linear' , type: 'spring', delay: 1.4}}}
               className="font-inter font-extrabold text-sm ml-[7%]">
-              HEAD OF DIGITAL DESIGN
+              DEVELOPED
             </motion.div>
             <motion.div 
               initial={{x:400, opacity: 0}}
               animate={{x:0, opacity: 1, transition: {duration: 1, ease: 'linear' , type: 'spring', delay: 1.4}}}
               className="font-inter font-bold text-xs ml-[7%]">
-              JOUST-Literary Fest Of DELHI-NCR
+              Original APPS and DESIGN ideas
             </motion.div>
           </motion.div>
           <motion.div className=" relative ml-32 mt-10">
