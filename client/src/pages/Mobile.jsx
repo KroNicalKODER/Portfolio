@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 const Mobile = () => {
   return (
-    <div className="h-screen flex flex-col relative text-white font-inter font-semibold">
+    <div className="h-screen flex flex-col bg-black relative text-white font-inter font-semibold">
       <img src={bgImage} className="absolute  h-screen" alt="" />
 
       <div className="absolute w-[150px] z-40 h-[550px] self-center ">

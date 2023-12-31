@@ -55,7 +55,7 @@
         {
             "message" : "Several C++ Projects",
             "title" : "C++ Projects",
-            "image": "/static/ProjectImages/C++ Projects.png",
+            "image": "/static/ProjectImages/C++Projects.png",
             "extras": "DSA, Data Handling, File Management",
             "btn1-content": "GitHub",
             "btn1-link": "https://github.com/KroNicalKODER/CPP-projects",

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+
 import Developer from '../../assets/Mobile/skill-developer.png'
 import Designer from '../../assets/Mobile/skill-designer.png'
 import Programming from '../../assets/Mobile/skill-programming.png'
