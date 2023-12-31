@@ -8,21 +8,21 @@ import BackFlip from '../assets/Models/Backflip/model.glb'
 
 const Standing = (props) => {
   const { scene: model, animations } = useGLTF(StandingModel);
-  const {animations: thinking} = useGLTF(ThinkingModel)
-  const {animations: looking} = useGLTF(LookingAround)
-  const {animations: backflip} = useGLTF(BackFlip)
+  // const {animations: thinking} = useGLTF(ThinkingModel)
+  // const {animations: looking} = useGLTF(LookingAround)
+  // const {animations: backflip} = useGLTF(BackFlip)
 
   const [currAnimation, setCurrAnimation] = useState(0)
 
   const stRef = useRef();
   animations[0].name = "StandingAnimation"
-  thinking[0].name="ThinkingAnimation"
-  looking[0].name="LookingAnimation"
-  backflip[0].name="BackflipAnimation"
+  // thinking[0].name="ThinkingAnimation"
+  // looking[0].name="LookingAnimation"
+  // backflip[0].name="BackflipAnimation"
 
-  const animationsName = ["StandingAnimation","StandingAnimation","BackflipAnimation","ThinkingAnimation"]
+  const animationsName = ["StandingAnimation"]
   
-  const { actions, mixer } = useAnimations([animations[0],thinking[0],looking[0],backflip[0]],model,{clampWhenFinished:true})
+  const { actions, mixer } = useAnimations([animations[0]],model,{clampWhenFinished:true})
   
   
   useEffect(() => {
