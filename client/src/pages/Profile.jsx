@@ -57,7 +57,7 @@ const Profile = () => {
           no bounds and innovation has no limits, I aspire to leave a lasting
           mark.
         </motion.div>
-        <div className="flex w-full ml-16 justify-center items-center mt-12">
+        <div className="flex w-full ml-16 z-50 justify-center items-center mt-12">
           <Link to={'/email'} className="border-2 z-10 border-white rounded-md px-5 font-inter font-bold cursor-pointer py-1">
             Let's Talk
           </Link>

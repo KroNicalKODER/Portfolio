@@ -28,31 +28,60 @@ import MobileAchievement from './pages/Mobile/Achievement';
 const App = () => {
   const [currScreenCount, setCurrScreenCount] = useState(1);
 
-  
   useEffect(() => {
+    let allowScreenCountUpdate = true;
+  
     const handleKeyPress = (event) => {
-      // Check for the key pressed (ArrowUp, ArrowDown, 'w', 's')
-      // Update currScreenCount accordingly
       if (
         (event.key === 'ArrowUp' || event.key === 'w') &&
         currScreenCount > 1
       ) {
         setCurrScreenCount((prevCount) => prevCount - 1);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       } else if (
         (event.key === 'ArrowDown' || event.key === 's') &&
         currScreenCount < 6
       ) {
-        setCurrScreenCount((prevCount) => prevCount + 1);
+        if (allowScreenCountUpdate) {
+          setCurrScreenCount((prevCount) => prevCount + 1);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          allowScreenCountUpdate = false;
+  
+          // Allow ScreenCount update after 1 second
+          setTimeout(() => {
+            allowScreenCountUpdate = true;
+          }, 1000);
+        }
       }
     };
-    // Add the event listener when the component mounts
+  
+    const handleScroll = (event) => {
+      if (allowScreenCountUpdate) {
+        if (event.deltaY > 6 && currScreenCount < 6) {
+          setCurrScreenCount((prevCount) => prevCount + 1);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          allowScreenCountUpdate = false;
+  
+          // Allow ScreenCount update after 1 second
+          setTimeout(() => {
+            allowScreenCountUpdate = true;
+          }, 1000);
+        } else if (event.deltaY < -6 && currScreenCount > 1) {
+          setCurrScreenCount((prevCount) => prevCount - 1);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      }
+    };
+  
     window.addEventListener('keydown', handleKeyPress);
-
-    // Remove the event listener when the component unmounts
+    window.addEventListener('wheel', handleScroll);
+  
     return () => {
       window.removeEventListener('keydown', handleKeyPress);
-    }
-  }, [currScreenCount]) // Re-run the effect when currScreenCount changes
+      window.removeEventListener('wheel', handleScroll);
+    };
+  }, [currScreenCount]);
+ 
   
   const LaptopScreen = () =>{
     return(
