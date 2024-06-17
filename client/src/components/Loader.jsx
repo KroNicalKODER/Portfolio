@@ -1,9 +1,9 @@
-import { Html, useProgress } from '@react-three/drei'
+import React from 'react'
 
-function Loader() {
-  const { progress } = useProgress()
-  const rounded = progress.toFixed(2)
-  return <Html className='whitespace-nowrap' center>{rounded} % loaded</Html>
+const Loader = () => {
+  return (
+    <div>Loader</div>
+  )
 }
 
 export default Loader

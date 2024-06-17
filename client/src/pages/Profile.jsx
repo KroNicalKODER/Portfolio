@@ -20,7 +20,6 @@ const Profile = () => {
         src={planet}
         className="absolute -mt-[40rem] -ml-[37rem]"
         alt=""
-        srcset=""
       />
       <div className="flex flex-[1] flex-col">
         <motion.div
@@ -97,10 +96,9 @@ const Profile = () => {
           <pointLight intensity={5} position={[1,2,2]} color="green" />
           <pointLight intensity={15} position={[1,1,1]} color="green" />
           <OrbitControls enableZoom={false} enablePan={false}/>
-          <Suspense fallback={<Loader/>}>
+          <Suspense>
             <Standing />
           </Suspense>
-          
           <UFO/>
         </Canvas>
         </motion.div>

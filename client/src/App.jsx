@@ -16,7 +16,6 @@ import Skill from './pages/Skill';
 import Project from './pages/Project';
 import Academics from './pages/Academics';
 import Achievements from './pages/Achievements';
-import ProgressBar from './components/ProgressBar';
 import Mobile from './pages/Mobile';
 import Email from './pages/Email'
 
@@ -56,21 +55,21 @@ const App = () => {
     };
   
     const handleScroll = (event) => {
-      if (allowScreenCountUpdate) {
-        if (event.deltaY > 6 && currScreenCount < 6) {
-          setCurrScreenCount((prevCount) => prevCount + 1);
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-          allowScreenCountUpdate = false;
+      // if (allowScreenCountUpdate) {
+      //   if (event.deltaY > 6 && currScreenCount < 6) {
+      //     setCurrScreenCount((prevCount) => prevCount + 1);
+      //     window.scrollTo({ top: 0, behavior: 'smooth' });
+      //     allowScreenCountUpdate = false;
   
-          // Allow ScreenCount update after 1 second
-          setTimeout(() => {
-            allowScreenCountUpdate = true;
-          }, 1000);
-        } else if (event.deltaY < -6 && currScreenCount > 1) {
-          setCurrScreenCount((prevCount) => prevCount - 1);
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-      }
+      //     // Allow ScreenCount update after 1 second
+      //     setTimeout(() => {
+      //       allowScreenCountUpdate = true;
+      //     }, 1000);
+      //   } else if (event.deltaY < -6 && currScreenCount > 1) {
+      //     setCurrScreenCount((prevCount) => prevCount - 1);
+      //     window.scrollTo({ top: 0, behavior: 'smooth' });
+      //   }
+      // }
     };
   
     window.addEventListener('keydown', handleKeyPress);
