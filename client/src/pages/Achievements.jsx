@@ -1,15 +1,11 @@
 import React from 'react'
 import {motion} from 'framer-motion'
 
-import Astronaut from '../assets/achievements.png'
 import Winner from '../assets/winner-astraunaut.png'
-
-
 
 const Achievements = () => {
   return (
     <div className="h-screen overflow-hidden">
-      
       
       <div className="h-full w-full flex">
         <div className="flex flex-[1] justify-center flex-col">

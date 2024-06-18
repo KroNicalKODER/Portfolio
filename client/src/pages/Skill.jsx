@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-import FullStack from '../components/Skill/FullStack';
-import SoftSkills from '../components/Skill/SoftSkills';
-import Designing from '../components/Skill/Designing';
-import Programming from '../components/Skill/Programming';
+import FullStack from '../components/Skill/FullStack.jsx';
+import SoftSkills from '../components/Skill/SoftSkills.jsx';
+import Designing from '../components/Skill/Designing.jsx';
+import Programming from '../components/Skill/Programming.jsx';
 
 import { Link } from 'react-router-dom'
-
-import redPlanet from '../assets/planet-2.png';
 
 import './Skill.css';
 

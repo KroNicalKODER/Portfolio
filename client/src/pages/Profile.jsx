@@ -1,11 +1,10 @@
-import React, { useState, Suspense } from "react";
-import Standing from "../components/Standing";
+import React, { Suspense } from "react";
+import Standing from "../components/Standing.jsx";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Environment, FaceControls } from "@react-three/drei";
+import { OrbitControls } from "@react-three/drei";
 import { motion } from "framer-motion";
 import planet from "../assets/planet-2.png";
-import UFO from "../components/UFO";
-import Loader from '../components/Loader'
+import UFO from "../components/UFO.jsx";
 import {Link} from 'react-router-dom'
 
 import gitHub from '../assets/Logos/github.png'

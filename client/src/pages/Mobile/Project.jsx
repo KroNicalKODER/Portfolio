@@ -1,6 +1,6 @@
 import React from 'react'
 import {motion} from 'framer-motion'
-import WrapperMobile from '../../components/Mobile/WrapperMobile'
+import WrapperMobile from '../../components/Mobile/WrapperMobile.jsx'
 import { Link } from 'react-router-dom'
 
 const Project = () => {

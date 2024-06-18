@@ -1,10 +1,9 @@
 import React from 'react'
 import {motion} from 'framer-motion'
 
-import Wrapper from '../components/Wrapper'
+import Wrapper from '../components/Wrapper.jsx'
 
 import earthImg from '../assets/earth.png'
-import { Link } from 'react-router-dom'
 
 
 const Project = () => {

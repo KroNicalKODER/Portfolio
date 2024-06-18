@@ -1,8 +1,7 @@
 import React, {Suspense} from 'react'
-import { Canvas, useThree } from '@react-three/fiber'
+import { Canvas } from '@react-three/fiber'
 import Standing from './Standing'
 import { OrbitControls } from '@react-three/drei'
-import Loader from '../Loader'
 
 const Experience = () => {
   return (
@@ -15,7 +14,7 @@ const Experience = () => {
         <spotLight intensity={5} position={[0,2,3]} />
         <spotLight intensity={2} position={[-2,2,3]} />
         <OrbitControls enableZoom={false} enableRotate={false} rotation={[]}/>
-        <Suspense fallback={<Loader/>}>
+        <Suspense>
           <Standing/>
         </Suspense>
     </Canvas>

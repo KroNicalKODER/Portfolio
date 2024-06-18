@@ -18,7 +18,7 @@ const ScrollComponent = ({ currScreenCount }) => {
     return (
         <div>
             <div className='absolute flex mt-56 w-full pr-4 items-center justify-end'>
-                <ul className='flex flex-col text-right text-white text-xs font-bold'>
+                <div className='flex flex-col text-right text-white text-xs font-bold'>
                     <span className='self-center mb-5 text-green-400'>Up/W</span>
                     {
                         displayText.map((item, index) => (
@@ -31,18 +31,18 @@ const ScrollComponent = ({ currScreenCount }) => {
                             )
                             :
                             index == currScreenCount - 1 ? (
-                                <li
+                                <div
                                     key={index}
                                     dangerouslySetInnerHTML={{ __html: item }}
                                     className='text-purple-400 font-bold'
-                                />
+                                ></div>
                             )
                             :
                             (
-                                <li
+                                <div
                                     key={index}
                                     dangerouslySetInnerHTML={{ __html: item }}
-                                />
+                                ></div>
                             )
                         ))
                     }
@@ -51,7 +51,7 @@ const ScrollComponent = ({ currScreenCount }) => {
                         <span>Down/S</span>
                     </div>
 
-                </ul>
+                </div>
             </div>
             
         </div>

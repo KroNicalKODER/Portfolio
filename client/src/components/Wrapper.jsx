@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import cardsData from "../Data/card.json";
-import Card from "./ProjectCard";
+import Card from "./ProjectCard.jsx";
 
 import './CardSlider.css'
 const Wrapper = () => {

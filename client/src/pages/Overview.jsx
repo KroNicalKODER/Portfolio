@@ -1,10 +1,10 @@
 import React from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import bluePlanet from '../assets/blue.png'
 import planetMan from '../assets/planet+astraunut.png'
 import rocketMan from '../assets/astraunut on rocket.png'
 import Bubble from '../components/Animations/Bubble'
-import RandomText from '../components/Animations/RandomText'
+// import RandomText from '../components/Animations/RandomText.jsx'
 import { Link } from 'react-router-dom'
 
 const Overview = () => {
@@ -81,7 +81,7 @@ const Overview = () => {
           exit={{ x: -1000, opacity: 0 }}
           transition={{ duration: 2, type: "spring" }}
         className='-translate-x-12 w-[130%]'>
-        <RandomText/>
+        {/* <RandomText/> */}
         </motion.div>
         
         <Link to={'/email'}>
@@ -101,7 +101,7 @@ const Overview = () => {
           initial={{ y: -100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: -100, opacity: 0 }}
-          transition={{ type: "spring", duration: 2 }}
+          transition={{ type: "spring", duration: 1 }}
           className='text-[3rem] mt-24 -translate-x-0 ml-10 drop-shadow-lg'>
           <div className='font-inter font-extrabold'>
             <span className='text-[#00FFE0]'>TAKE</span>

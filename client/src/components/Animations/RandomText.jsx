@@ -1,76 +1,69 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import data from './data.json';
 
-const RandomText = ({inMobile = false}) => {
-  const [toNum,setToNum] = useState(70000)
-  const [bold, setBold] = useState('font-bold')
-  const [size, setSize] = useState('text-xl')
-  const [lsize, setLsize] = useState('text-base')
-  const [smSize, setSmSize] = useState('')
-  const [str1,setStr1] = useState('')
-  const [str2,setStr2] = useState('')
+const RandomText = ({ inMobile = false }) => {
+  const [bold, setBold] = useState('font-bold');
+  const [size, setSize] = useState('text-xl');
+  const [lsize, setLsize] = useState('text-base');
+  const [smSize, setSmSize] = useState('');
+  const [str1, setStr1] = useState('');
+  const [str2, setStr2] = useState('');
+
+  const texts = useMemo(() => {
+    return data.data.map(item => `${item.t1} ${item.t2}`);
+  }, []);
+
   useEffect(() => {
-    const animation = document.getElementById('animation');
-
-    // if (animation == null || document.getElementById('animation1') == null) return;
-    if(inMobile){
-      setBold('font-medium')
-      setSize('text-md')
-      setSmSize('text-xs')
-      setLsize('text-sm')
-      setToNum(10000)
-    }
-    const h1 = [];
-    const h2 = [];
-    let index = 1;
-
-    for (let itr in data.data) {
-      h1.push(data.data[itr]['t1']);
-      h2.push(data.data[itr]['t2']);
+    if (inMobile) {
+      setBold('font-medium');
+      setSize('text-md');
+      setSmSize('text-xs');
+      setLsize('text-sm');
     }
 
-    function sleep(ms) {
-      return new Promise((resolve) => setTimeout(resolve, ms));
-    }
-
-    function generateString(len) {
-      let str = '';
+    const generateString = (len) => {
       const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz';
-      for (let i = 0; i < len; ++i) str += chars[Math.floor(Math.random() * chars.length)];
-      return str;
-    }
+      return Array.from({ length: len }, () => chars[Math.floor(Math.random() * chars.length)]).join('');
+    };
 
-    function printString(str, len) {
-      let str1 = str.substring(0, len);
-      setStr1(str1)
-      let str2 = str.substring(len + 1);
-      setStr2(str2)
-      // animation.innerHTML = str1;
-      // document.getElementById('animation1').innerHTML = str2;
-    }
+    const printString = (str, len) => {
+      setStr1(str.substring(0, len));
+      setStr2(str.substring(len + 1));
+    };
 
-    function display(stri, len) {
-      for (let i = 0; i < toNum; i++) {
-        const str = generateString(stri.length);
-        setTimeout(() => printString(str, len), 1);
-      }
-      setTimeout(() => printString(stri, len), 1);
-    }
+    const display = (stri, len) => {
+      const randomStrings = Array.from({ length: 10 }, () => generateString(stri.length));
+      let index = 0;
+      
+      const updateText = () => {
+        if (index < randomStrings.length) {
+          printString(randomStrings[index], len);
+          index++;
+          requestAnimationFrame(updateText);
+        } else {
+          printString(stri, len);
+        }
+      };
 
-    let str0 = h1[0] + ' ' + h2[0];
-    display(str0, h1[0].length);
+      updateText();
+    };
+
+    let index = 0;
     const intervalId = setInterval(() => {
-      if (index === 4) {
+      if (index >= texts.length) {
         index = 0;
       }
-      let str = h1[index] + ' ' + h2[index];
-      display(str, h1[index].length);
-      index = index + 1;
+      const str = texts[index];
+      display(str, str.indexOf(' '));
+      index++;
     }, 5000);
+
+    // Initial display
+    display(texts[0], texts[0].indexOf(' '));
 
     // Clear the interval when the component is about to unmount
     return () => clearInterval(intervalId);
-  }, []);
+  }, [inMobile, texts]);
 
   return (
     <div className="root">

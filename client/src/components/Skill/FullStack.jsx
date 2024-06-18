@@ -5,9 +5,9 @@ import express from './images/FullStack/express-js.png'
 import mysql from './images/FullStack/mysql.png'
 import node from './images/FullStack/nodejs.png'
 import native from './images/FullStack/reactnative.png'
-import mongo from './images/FullStack/mongodb.svg'
-import php from './images/FullStack/php.svg'
-import react from './images/FullStack/react.svg'
+import mongo from './images/FullStack/mongodb.png'
+import php from './images/FullStack/php.png'
+import react from './images/FullStack/react.png'
 
 import './Designing.css'
 

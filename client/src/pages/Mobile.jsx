@@ -1,6 +1,6 @@
 import React from "react";
-import Experience from "../components/Mobile/Experience";
-import RandomText from "../components/Animations/RandomText";
+import Experience from "../components/Mobile/Experience.jsx";
+// import RandomText from "../components/Animations/RandomText.jsx";
 import bgImage from "../assets/Mobile/bg.png";
 import "./Mobile.css";
 import Home from "./Mobile/Home";
@@ -16,7 +16,7 @@ const Mobile = () => {
       </div>
       <div className="z-10 flex items-center  justify-between py-[1%] mx-[3%]">
         <span className="text-xl">
-          <RandomText inMobile={true} />
+          {/* <RandomText inMobile={true} /> */}
         </span>
         <div className="flex whitespace-nowrap flex-col">
           <span>Mradul | KronikalKodar</span>

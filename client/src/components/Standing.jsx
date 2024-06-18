@@ -1,24 +1,12 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { useFrame } from '@react-three/fiber';
-import { useAnimations, useFBX, useGLTF } from '@react-three/drei';
+import { useAnimations, useGLTF } from '@react-three/drei';
 import StandingModel from '../assets/Models/Standing/model.glb';
-import ThinkingModel from '../assets/Models/Thinking/thinking.glb'
-import LookingAround from '../assets/Models/Looking Around/Looking Around.glb'
-import BackFlip from '../assets/Models/Backflip/model.glb'
-
 const Standing = (props) => {
   const { scene: model, animations } = useGLTF(StandingModel);
-  // const {animations: thinking} = useGLTF(ThinkingModel)
-  // const {animations: looking} = useGLTF(LookingAround)
-  // const {animations: backflip} = useGLTF(BackFlip)
 
-  const [currAnimation, setCurrAnimation] = useState(0)
 
   const stRef = useRef();
   animations[0].name = "StandingAnimation"
-  // thinking[0].name="ThinkingAnimation"
-  // looking[0].name="LookingAnimation"
-  // backflip[0].name="BackflipAnimation"
 
   const animationsName = ["StandingAnimation"]
   

@@ -1,7 +1,5 @@
 import React from 'react';
 
-import img from '../../assets/ProjectImages/2ndshop.png'
-
 import './CardSlider.css'
 
 const ProjectCard = ({ classGiven, image, message, title, extras, btn1Content, btn2Content, btn1Link, btn2Link }) => {
