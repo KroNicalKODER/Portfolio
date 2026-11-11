@@ -1,16 +1,17 @@
 // Animation styles for switching category; the Skills screen has a picker to compare them.
 export const SKILL_FX = [
-  { id: 'train', label: 'Train' },
-  { id: 'warp', label: 'Warp' },
-  { id: 'core', label: 'Core' },
-  { id: 'flip', label: 'Flip' },
+  { id: 'eclipse', label: 'Eclipse' },
+  { id: 'flip', label: 'Flipboard' },
+  { id: 'pulse', label: 'Pulse' },
+  { id: 'conveyor', label: 'Conveyor' },
 ];
-const FX_KEY = 'skillFx';
+const FX_KEY = 'skillFx2';
 export const loadFx = () => {
   try {
-    return localStorage.getItem(FX_KEY) || 'train';
+    const v = localStorage.getItem(FX_KEY);
+    return SKILL_FX.some((f) => f.id === v) ? v : 'eclipse';
   } catch {
-    return 'train';
+    return 'eclipse';
   }
 };
 export const saveFx = (id) => {
