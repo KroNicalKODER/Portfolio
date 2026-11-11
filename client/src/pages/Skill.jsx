@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
 import SkillPlanet from '../components/Skill/SkillPlanet.jsx';
+import { SKILL_FX, loadFx, saveFx } from '../components/Skill/skillFx.js';
 import { skillGroups } from '../Data/profile';
 
 import './Skill.css';
@@ -10,6 +11,11 @@ import './Skill.css';
 const Skill = () => {
   const [activeId, setActiveId] = useState(skillGroups[0].id);
   const active = skillGroups.find((g) => g.id === activeId);
+  const [fx, setFx] = useState(loadFx);
+  const pickFx = (id) => {
+    saveFx(id);
+    setFx(id);
+  };
   const wordRefs = useRef({});
   const getOrigin = useCallback((id) => wordRefs.current[id], []);
 
@@ -65,6 +71,23 @@ const Skill = () => {
               Hire Me
             </Link>
           </div>
+
+          {/* Temporary: compare switch animations, then keep the favourite. */}
+          <div className="ml-36 mt-10 flex items-center gap-2 font-inter">
+            <span className="font-mono text-[0.6rem] tracking-[0.3em] text-gray-500 mr-1">ANIMATION</span>
+            {SKILL_FX.map((f) => (
+              <button
+                key={f.id}
+                type="button"
+                onClick={() => pickFx(f.id)}
+                className={`rounded-full border px-3 py-1 text-[0.7rem] font-bold transition-colors ${
+                  fx === f.id ? 'border-cyan-300 text-cyan-200 bg-cyan-300/10' : 'border-white/20 text-gray-300 hover:border-white/50'
+                }`}
+              >
+                {f.label}
+              </button>
+            ))}
+          </div>
         </motion.div>
 
         <motion.div className="flex flex-[1] flex-col justify-center items-center">
@@ -74,7 +97,7 @@ const Skill = () => {
             animate={{ x: [500, 0], y: [0, 0], opacity: 1 }}
             transition={{ duration: 2, type: 'spring', ease: 'linear' }}
           >
-            <SkillPlanet groupId={active.id} items={active.items} label={active.label} getOrigin={getOrigin} />
+            <SkillPlanet groupId={active.id} items={active.items} label={active.label} getOrigin={getOrigin} fx={fx} />
           </motion.div>
         </motion.div>
       </motion.div>

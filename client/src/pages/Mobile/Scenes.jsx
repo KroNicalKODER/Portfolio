@@ -19,6 +19,7 @@ import SocialIcons from '../../components/SocialIcons.jsx';
 import FlightPath from '../../components/FlightPath.jsx';
 import Coverflow from '../../components/Coverflow.jsx';
 import SkillPlanet from '../../components/Skill/SkillPlanet.jsx';
+import { loadFx } from '../../components/Skill/skillFx.js';
 import RandomText from '../../components/Animations/RandomText.jsx';
 import { links, profileBio, skillGroups, projects, academics, achievements } from '../../Data/profile';
 
@@ -185,7 +186,7 @@ export const SkillsScene = () => {
         ))}
       </Rise>
       <div className="flex-1 flex items-center justify-center min-h-[22rem]">
-        <SkillPlanet groupId={active.id} getOrigin={getOrigin} items={active.items} label={active.label} size={264} radius={150} dot={48} />
+        <SkillPlanet fx={loadFx()} groupId={active.id} getOrigin={getOrigin} items={active.items} label={active.label} size={264} radius={150} dot={48} />
       </div>
       <Rise className="text-center font-inter text-[0.65rem] text-gray-400">Tap a logo to name it</Rise>
     </Scene>
