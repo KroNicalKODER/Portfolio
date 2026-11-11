@@ -1,4 +1,4 @@
-import React, { Suspense, useState } from 'react';
+import React, { Suspense, useCallback, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Canvas } from '@react-three/fiber';
@@ -164,6 +164,8 @@ export const ExperienceScene = () => (
 export const SkillsScene = () => {
   const [activeId, setActiveId] = useState(skillGroups[0].id);
   const active = skillGroups.find((g) => g.id === activeId);
+  const chipRefs = useRef({});
+  const getOrigin = useCallback((id) => chipRefs.current[id], []);
   return (
     <Scene id="skills" className="flex flex-col">
       <Heading parts={['S', 'KIL', 'L', 'S']} />
@@ -171,6 +173,7 @@ export const SkillsScene = () => {
         {skillGroups.map((g) => (
           <button
             key={g.id}
+            ref={(el) => (chipRefs.current[g.id] = el)}
             type="button"
             onClick={() => setActiveId(g.id)}
             className={`font-inter font-extrabold text-xs px-3 py-1.5 rounded-full border transition-colors ${
@@ -182,7 +185,7 @@ export const SkillsScene = () => {
         ))}
       </Rise>
       <div className="flex-1 flex items-center justify-center min-h-[22rem]">
-        <SkillPlanet items={active.items} label={active.label} size={264} radius={150} dot={48} />
+        <SkillPlanet groupId={active.id} getOrigin={getOrigin} items={active.items} label={active.label} size={264} radius={150} dot={48} />
       </div>
       <Rise className="text-center font-inter text-[0.65rem] text-gray-400">Tap a logo to name it</Rise>
     </Scene>

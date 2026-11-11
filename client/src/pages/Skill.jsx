@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
@@ -10,6 +10,17 @@ import './Skill.css';
 const Skill = () => {
   const [activeId, setActiveId] = useState(skillGroups[0].id);
   const active = skillGroups.find((g) => g.id === activeId);
+  const wordRefs = useRef({});
+  const getOrigin = useCallback((id) => wordRefs.current[id], []);
+
+  // Hover intent: sweeping across the words shouldn't fire an animation per word.
+  const hoverTimer = useRef(null);
+  const hoverTo = (id) => {
+    clearTimeout(hoverTimer.current);
+    hoverTimer.current = setTimeout(() => setActiveId(id), 120);
+  };
+  const cancelHover = () => clearTimeout(hoverTimer.current);
+  useEffect(() => () => clearTimeout(hoverTimer.current), []);
 
   return (
     <motion.div className="h-screen">
@@ -36,11 +47,15 @@ const Skill = () => {
                 transition={{ duration: 0.5, delay: 0.2 + i * 0.3, type: 'spring' }}
                 className={`skill-tab font-inter ${i > 0 ? 'mt-10' : ''} ${activeId === group.id ? 'skill-tab-active' : ''}`}
                 data-text={group.label}
-                onClick={() => setActiveId(group.id)}
-                onHoverStart={() => setActiveId(group.id)}
+                onClick={() => {
+                  cancelHover();
+                  setActiveId(group.id);
+                }}
+                onHoverStart={() => hoverTo(group.id)}
+                onHoverEnd={cancelHover}
                 whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
               >
-                {group.label}
+                <span ref={(el) => (wordRefs.current[group.id] = el)}>{group.label}</span>
               </motion.div>
             ))}
           </motion.div>
@@ -59,7 +74,7 @@ const Skill = () => {
             animate={{ x: [500, 0], y: [0, 0], opacity: 1 }}
             transition={{ duration: 2, type: 'spring', ease: 'linear' }}
           >
-            <SkillPlanet items={active.items} label={active.label} />
+            <SkillPlanet groupId={active.id} items={active.items} label={active.label} getOrigin={getOrigin} />
           </motion.div>
         </motion.div>
       </motion.div>
