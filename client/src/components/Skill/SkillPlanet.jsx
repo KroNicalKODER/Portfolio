@@ -14,7 +14,7 @@ const clamp01 = (v) => Math.min(1, Math.max(0, v));
 const onOrbit = (r, a) => ({ x: r * Math.sin(a), y: -r * Math.cos(a) });
 
 // How long a leaving ring lives, per style (seconds).
-const OUT_TIME = { eclipse: 0.75, flip: 0.9, pulse: 0.75, conveyor: 1.0 };
+const OUT_TIME = { eclipse: 0.75, flip: 0.9, pulse: 0.75, flippulse: 0.7, conveyor: 1.0 };
 
 /*
  * Skills orbit the planet. On a category switch the current ring becomes a short-lived
@@ -140,6 +140,27 @@ const Ring = ({ ring, fx, radius, dot, compact, hovered, setHovered, onDone }) =
           };
     }
 
+    if (fx === 'flippulse') {
+      // Shockwave hits the orbit, then each logo flips over with a pop in a quick wave round the circle.
+      return phase === 'out'
+        ? {
+            initial: false,
+            animate: { x: s.x, y: s.y, rotateY: 90, scale: [1, 1.18, 0.9], opacity: [1, 1, 0] },
+            transition: { duration: 0.26, delay: 0.16 + order * 0.22, ease: 'easeIn' },
+          }
+        : {
+            initial: { x: s.x, y: s.y, rotateY: -90, scale: 0.9, opacity: 0 },
+            animate: { x: s.x, y: s.y, rotateY: 0, scale: [0.9, 1.22, 1], opacity: 1 },
+            transition: {
+              duration: 0.4,
+              delay: 0.38 + order * 0.22,
+              ease: 'easeOut',
+              scale: { duration: 0.4, delay: 0.38 + order * 0.22, times: [0, 0.55, 1] },
+              opacity: { duration: 0.01, delay: 0.38 + order * 0.22 },
+            },
+          };
+    }
+
     if (fx === 'pulse') {
       // The shockwave reaches the orbit ~0.25s in: old logos pop, new ones pop in right behind it.
       return phase === 'out'
@@ -187,7 +208,7 @@ const Ring = ({ ring, fx, radius, dot, compact, hovered, setHovered, onDone }) =
 
   return (
     <div className={`absolute inset-0 flex items-center justify-center ${phase === 'out' ? 'pointer-events-none' : ''}`}>
-      {fx === 'pulse' && phase === 'in' && (
+      {(fx === 'pulse' || fx === 'flippulse') && phase === 'in' && (
         <motion.span
           className="absolute rounded-full border-2 border-cyan-300 pointer-events-none"
           style={{ width: radius * 2, height: radius * 2, boxShadow: '0 0 30px rgba(0,255,224,0.6), inset 0 0 30px rgba(0,255,224,0.4)' }}
@@ -200,7 +221,7 @@ const Ring = ({ ring, fx, radius, dot, compact, hovered, setHovered, onDone }) =
         <motion.span
           key={item.name}
           className="skill-orbit"
-          style={fx === 'flip' ? { transformPerspective: 500 } : undefined}
+          style={fx === 'flip' || fx === 'flippulse' ? { transformPerspective: 500 } : undefined}
           {...motionFor(i)}
         >
           <Dot item={item} dot={dot} compact={compact} hovered={hovered} setHovered={setHovered} leaving={phase === 'out'} />
