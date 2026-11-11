@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 // Minimal coverflow: only artwork slides (the neighbours are smaller, faded and slightly
 // tilted), and the details of the centred project appear once, underneath.
@@ -89,12 +89,10 @@ const Coverflow = ({ items, compact = false, keyboard = true, initial = 0 }) => 
 
       {/* details of the centred project */}
       <div className={`w-full text-center font-inter ${compact ? 'mt-4 px-6 min-h-[7.5rem]' : 'mt-6 max-w-[30rem] min-h-[8.5rem]'}`}>
-        <AnimatePresence mode="wait">
           <motion.div
             key={p.slug}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.25 }}
           >
             <h3 className={`font-extrabold ${compact ? 'text-base' : 'text-2xl'}`}>{p.title}</h3>
@@ -110,7 +108,6 @@ const Coverflow = ({ items, compact = false, keyboard = true, initial = 0 }) => 
               )}
             </div>
           </motion.div>
-        </AnimatePresence>
       </div>
 
       {/* controls */}

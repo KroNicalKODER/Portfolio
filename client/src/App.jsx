@@ -43,7 +43,14 @@ const LaptopScreen = () => {
     };
     // Trackpads emit many small wheel events; accumulate and fire once past a threshold.
     const onWheel = (e) => {
-      if (overlayOpen() || Date.now() < lockedUntil.current) return;
+      if (overlayOpen()) return;
+      const now = Date.now();
+      if (now < lockedUntil.current) {
+        // Still the same gesture (e.g. trackpad momentum): keep waiting for a pause.
+        lockedUntil.current = Math.max(lockedUntil.current, now + 400);
+        wheelDelta.current = 0;
+        return;
+      }
       wheelDelta.current += e.deltaY;
       if (Math.abs(wheelDelta.current) > 60) {
         go(screen + (wheelDelta.current > 0 ? 1 : -1));
@@ -77,7 +84,18 @@ const LaptopScreen = () => {
   );
 };
 
-const Layout = () => (window.innerWidth > 768 ? <LaptopScreen /> : <Mobile />);
+// Re-pick the layout when the window is resized or a phone is rotated.
+// Desktop needs width and height; phones in landscape (short screens) stay on the mobile layout.
+const isWide = () => window.innerWidth > 768 && window.innerHeight > 500;
+const Layout = () => {
+  const [wide, setWide] = useState(isWide);
+  useEffect(() => {
+    const onResize = () => setWide(isWide());
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
+  return wide ? <LaptopScreen /> : <Mobile />;
+};
 
 // reducedMotion="user": Framer Motion animations follow the OS "reduce motion" setting.
 const App = () => (

@@ -41,7 +41,7 @@ const Mobile = () => {
   const jump = (i) => scroller.current.querySelector(`#${ids[i]}`)?.scrollIntoView({ behavior: 'smooth' });
 
   return (
-    <div className="relative h-[100svh] bg-black text-white font-inter">
+    <div className="relative h-[100svh] supports-[height:100dvh]:h-[100dvh] bg-black text-white font-inter">
       <Starfield />
       <header className="absolute inset-x-0 top-0 z-40 flex items-center justify-between px-5 h-14 bg-gradient-to-b from-black/80 to-transparent">
         <button type="button" onClick={() => jump(0)} className="font-extrabold text-sm">

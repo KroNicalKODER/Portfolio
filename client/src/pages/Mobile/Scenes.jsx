@@ -43,7 +43,7 @@ export const Heading = ({ parts: [a, b, c, d] }) => (
 );
 
 const Scene = ({ id, children, className = '' }) => (
-  <section id={id} className={`relative snap-start min-h-[100svh] overflow-hidden px-5 pt-20 pb-24 ${className}`}>
+  <section id={id} className={`relative snap-start min-h-[100svh] supports-[height:100dvh]:min-h-[100dvh] overflow-hidden px-5 pt-20 pb-24 ${className}`}>
     {children}
   </section>
 );
@@ -99,7 +99,7 @@ export const OverviewScene = () => (
         initial={{ y: -60, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ type: 'spring', duration: 1.2 }}
-        className="font-inter font-extrabold text-[2.1rem] leading-[1.05] drop-shadow-lg"
+        className="font-inter font-extrabold text-[clamp(1.6rem,8.6vw,2.1rem)] leading-[1.05] drop-shadow-lg"
       >
         <span className="text-[#00FFE0]">TAKE</span> A JOURNEY
         <br />

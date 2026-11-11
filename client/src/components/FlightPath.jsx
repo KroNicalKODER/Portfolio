@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { AnimatePresence, animate, motion, useMotionValue, useTransform } from 'framer-motion';
+import { animate, motion, useMotionValue, useTransform } from 'framer-motion';
 
 import rocketMan from '../assets/astraunut on rocket.png';
 import bigPlanet from '../assets/planet-3.png';
@@ -166,12 +166,10 @@ const FlightPath = ({ compact = false }) => {
 
       {/* ---- mission log: headline stats, full log on demand ---- */}
       <div className={`relative ${compact ? 'mt-12' : 'mt-[clamp(2.5rem,9vh,5rem)] mx-auto max-w-[56rem]'}`}>
-        <AnimatePresence mode="wait">
           <motion.div
             key={job.slug}
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.35 }}
             className={`text-center ${compact ? 'px-3 py-4' : 'px-8 py-2'}`}
           >
@@ -218,7 +216,6 @@ const FlightPath = ({ compact = false }) => {
               </div>
 
           </motion.div>
-        </AnimatePresence>
       </div>
 
       <LogSheet job={job} open={expanded} onClose={closeLog} compact={compact} />
