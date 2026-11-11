@@ -70,7 +70,7 @@ const Coverflow = ({ items, compact = false, keyboard = true, initial = 0 }) => 
                 rotateY: -Math.sign(offset) * 18,
                 opacity: hidden ? 0 : opacityAt[Math.min(abs, 2)],
               }}
-              transition={{ type: 'spring', stiffness: 140, damping: 22 }}
+              transition={{ type: 'spring', stiffness: 420, damping: 38, mass: 0.7 }}
               className={`absolute top-0 rounded-xl overflow-hidden border transition-[border-color,box-shadow] duration-500 ${
                 isActive ? 'border-cyan-300/60 shadow-[0_0_40px_rgba(0,255,224,0.22)]' : 'border-white/10'
               }`}
