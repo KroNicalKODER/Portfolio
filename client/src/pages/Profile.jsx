@@ -5,66 +5,49 @@ import { OrbitControls } from '@react-three/drei';
 import { motion } from 'framer-motion';
 import planet from '../assets/planet-2.png';
 import UFO from '../components/UFO.jsx';
-import { Link } from 'react-router-dom';
 
-import gitHub from '../assets/Logos/github.png';
-import LinkedIn from '../assets/Logos/linkedin.png';
-import Leetcode from '../assets/Logos/leetcode.png';
-import CodeChef from '../assets/Logos/codechef.png';
-import { links, profileBio } from '../Data/profile';
-
-const socials = [
-  { href: links.github, icon: gitHub, label: 'GitHub' },
-  { href: links.linkedin, icon: LinkedIn, label: 'LinkedIn' },
-  { href: links.leetcode, icon: Leetcode, label: 'LeetCode' },
-  { href: links.codechef, icon: CodeChef, label: 'CodeChef' },
-];
+import SocialIcons from '../components/SocialIcons.jsx';
+import { profileBio } from '../Data/profile';
 
 const Profile = () => {
   return (
     <div className="flex h-screen">
       <img src={planet} className="absolute -mt-[40rem] -ml-[37rem]" alt="" />
-      <div className="flex flex-[1] flex-col">
+      <div className="relative z-10 flex flex-[1] flex-col justify-center pl-20 pr-10 pb-10">
         <motion.div
           initial={{ x: -500 }}
           animate={{ x: 0 }}
           transition={{ duration: 2, type: 'spring', ease: 'linear' }}
-          className="z-10 ml-20 mt-16 "
         >
           <motion.span className="text-red-500 text-8xl font-inter font-extrabold drop-shadow-md">P</motion.span>
           <motion.span className="text-white text-5xl font-inter font-extrabold drop-shadow-md">ROF</motion.span>
           <motion.span className="text-cyan-300 text-8xl font-inter font-extrabold drop-shadow-md">I</motion.span>
           <motion.span className="text-white text-5xl font-inter font-extrabold drop-shadow-md">LE</motion.span>
         </motion.div>
+
         <motion.div
           initial={{ x: -500 }}
           animate={{ x: 0 }}
           transition={{ duration: 2, type: 'spring', ease: 'linear' }}
-          className="z-10 ml-20 mt-12 mr-10 font-inter font-semibold space-y-4 text-[0.95rem] leading-relaxed"
+          className="mt-8 max-w-[36rem] font-inter font-semibold space-y-4 text-[0.95rem] leading-relaxed"
         >
           {profileBio.map((p, i) => (
-            <p key={i} className={i === profileBio.length - 1 ? 'text-cyan-300' : ''}>
+            <p key={i} className={i === profileBio.length - 1 ? 'text-cyan-300' : 'text-gray-100'}>
               {p}
             </p>
           ))}
         </motion.div>
-        <div className="flex w-full ml-16 z-50 justify-center items-center mt-10">
-          <Link to={'/email'} className="border-2 z-10 border-white rounded-md px-5 font-inter font-bold cursor-pointer py-1">
-            Let&apos;s Talk
-          </Link>
-          {socials.map((s) => (
-            <a
-              key={s.label}
-              href={s.href}
-              target="_blank"
-              rel="noreferrer"
-              className="font-inter font-semibold text-sm border-2 ml-2 px-2 rounded-lg py-1 flex items-center hover:border-cyan-300 transition-colors"
-            >
-              <img width="25" height="25" className="mr-1" src={s.icon} alt="" />
-              {s.label}
-            </a>
-          ))}
-        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1 }}
+          className="mt-9 flex items-center gap-5"
+        >
+          <span className="font-mono text-[0.6rem] tracking-[0.3em] text-gray-400">FIND ME ON</span>
+          <span className="h-px w-10 bg-white/20" />
+          <SocialIcons />
+        </motion.div>
       </div>
       <div className="flex flex-[1] flex-col">
         <div className="flex w-full justify-center translate-y-12 shadow-lg text-cyan-300 font-inter font-semibold">

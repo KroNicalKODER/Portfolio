@@ -11,14 +11,11 @@ import purplePlanet from '../../assets/planet-3.png';
 import redPlanet from '../../assets/planet-2.png';
 import educated from '../../assets/Educated-Astaunot.png';
 import winner from '../../assets/winner-astraunaut.png';
-import gitHub from '../../assets/Logos/github.png';
-import LinkedIn from '../../assets/Logos/linkedin.png';
-import Leetcode from '../../assets/Logos/leetcode.png';
-import CodeChef from '../../assets/Logos/codechef.png';
 
 import Standing from '../../components/Standing.jsx';
 import UFO from '../../components/UFO.jsx';
 import TimelineItem from '../../components/TimelineItem.jsx';
+import SocialIcons from '../../components/SocialIcons.jsx';
 import FlightPath from '../../components/FlightPath.jsx';
 import Coverflow from '../../components/Coverflow.jsx';
 import SkillPlanet from '../../components/Skill/SkillPlanet.jsx';
@@ -63,29 +60,7 @@ const Rise = ({ children, delay = 0, className = '' }) => (
   </motion.div>
 );
 
-const socials = [
-  [links.github, gitHub, 'GitHub'],
-  [links.linkedin, LinkedIn, 'LinkedIn'],
-  [links.leetcode, Leetcode, 'LeetCode'],
-  [links.codechef, CodeChef, 'CodeChef'],
-];
-
-export const Socials = ({ small = false }) => (
-  <div className="flex flex-wrap gap-2">
-    {socials.map(([href, icon, label]) => (
-      <a
-        key={label}
-        href={href}
-        target="_blank"
-        rel="noreferrer"
-        className={`font-inter font-semibold border-2 border-white/80 rounded-lg flex items-center ${small ? 'text-xs px-2 py-1' : 'text-sm px-3 py-1.5'}`}
-      >
-        <img width={small ? 16 : 20} height={small ? 16 : 20} className="mr-1.5" src={icon} alt="" />
-        {label}
-      </a>
-    ))}
-  </div>
-);
+export const Socials = ({ small = false }) => <SocialIcons size={small ? 'sm' : 'md'} />;
 
 /* ---------- scenes ---------- */
 
@@ -145,7 +120,7 @@ export const OverviewScene = () => (
 );
 
 export const ProfileScene = () => (
-  <Scene id="profile">
+  <Scene id="profile" className="!pb-32">
     <img src={redPlanet} className="absolute -top-40 -right-44 w-[26rem] max-w-none opacity-80" alt="" />
     <div className="relative z-10">
       <Heading parts={['P', 'ROF', 'I', 'LE']} />
@@ -169,7 +144,7 @@ export const ProfileScene = () => (
           </p>
         ))}
       </Rise>
-      <Rise delay={0.3} className="mt-5">
+      <Rise delay={0.3} className="mt-6">
         <Socials small />
       </Rise>
     </div>
