@@ -43,7 +43,7 @@ export const Heading = ({ parts: [a, b, c, d] }) => (
 );
 
 const Scene = ({ id, children, className = '' }) => (
-  <section id={id} className={`relative snap-start min-h-[100svh] supports-[height:100dvh]:min-h-[100dvh] overflow-hidden px-5 pt-20 pb-24 ${className}`}>
+  <section id={id} className={`relative snap-start [scroll-snap-stop:always] min-h-[100svh] supports-[height:100dvh]:min-h-[100dvh] overflow-hidden px-5 pt-20 pb-32 ${className}`}>
     {children}
   </section>
 );
@@ -120,7 +120,7 @@ export const OverviewScene = () => (
 );
 
 export const ProfileScene = () => (
-  <Scene id="profile" className="!pb-32">
+  <Scene id="profile">
     <img src={redPlanet} className="absolute -top-40 -right-44 w-[26rem] max-w-none opacity-80" alt="" />
     <div className="relative z-10">
       <Heading parts={['P', 'ROF', 'I', 'LE']} />
@@ -231,7 +231,7 @@ export const AcademicsScene = () => (
 );
 
 export const AchievementsScene = () => (
-  <Scene id="achievements" className="flex flex-col !pb-32">
+  <Scene id="achievements" className="flex flex-col">
     <div className="relative z-10">
       <Heading parts={['A', 'CHIEV', 'E', 'MENTS']} />
       <div className="-ml-5">
