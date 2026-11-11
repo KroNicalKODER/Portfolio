@@ -1,76 +1,57 @@
 import React, { useEffect, useState, useMemo } from 'react';
-import data from './data.json';
+import { roles } from '../../Data/profile';
 
+// Cycles through roles with a "decoding" scramble effect every 4s.
 const RandomText = ({ inMobile = false }) => {
-  const [bold, setBold] = useState('font-bold');
-  const [size, setSize] = useState('text-xl');
-  const [lsize, setLsize] = useState('text-base');
-  const [smSize, setSmSize] = useState('');
   const [str1, setStr1] = useState('');
   const [str2, setStr2] = useState('');
 
-  const texts = useMemo(() => {
-    return data.data.map(item => `${item.t1} ${item.t2}`);
-  }, []);
+  const texts = useMemo(() => roles.map((r) => `${r.t1} ${r.t2}`), []);
 
   useEffect(() => {
-    if (inMobile) {
-      setBold('font-medium');
-      setSize('text-md');
-      setSmSize('text-xs');
-      setLsize('text-sm');
-    }
-
-    const generateString = (len) => {
-      const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz';
-      return Array.from({ length: len }, () => chars[Math.floor(Math.random() * chars.length)]).join('');
-    };
-
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz';
+    const generateString = (len) => Array.from({ length: len }, () => chars[Math.floor(Math.random() * chars.length)]).join('');
     const printString = (str, len) => {
       setStr1(str.substring(0, len));
       setStr2(str.substring(len + 1));
     };
 
-    const display = (stri, len) => {
-      const randomStrings = Array.from({ length: 10 }, () => generateString(stri.length));
-      let index = 0;
-      
-      const updateText = () => {
-        if (index < randomStrings.length) {
-          printString(randomStrings[index], len);
-          index++;
-          requestAnimationFrame(updateText);
+    let frame = 0;
+    const display = (target, splitAt) => {
+      const scrambles = Array.from({ length: 12 }, () => generateString(target.length));
+      let i = 0;
+      const tick = () => {
+        if (i < scrambles.length) {
+          printString(scrambles[i++], splitAt);
+          frame = requestAnimationFrame(tick);
         } else {
-          printString(stri, len);
+          printString(target, splitAt);
         }
       };
-
-      updateText();
+      tick();
     };
 
     let index = 0;
-    const intervalId = setInterval(() => {
-      if (index >= texts.length) {
-        index = 0;
-      }
-      const str = texts[index];
+    const show = () => {
+      const str = texts[index % texts.length];
       display(str, str.indexOf(' '));
       index++;
-    }, 5000);
+    };
+    show();
+    const intervalId = setInterval(show, 4000);
+    return () => {
+      clearInterval(intervalId);
+      cancelAnimationFrame(frame);
+    };
+  }, [texts]);
 
-    // Initial display
-    display(texts[0], texts[0].indexOf(' '));
-
-    // Clear the interval when the component is about to unmount
-    return () => clearInterval(intervalId);
-  }, [inMobile, texts]);
+  const big = inMobile ? 'text-sm font-medium' : 'text-base font-bold';
+  const small = inMobile ? 'text-xs font-medium' : 'text-sm font-bold';
 
   return (
-    <div className="root">
-      <div className=''>
-        <div id="animation" className={`dood whitespace-nowrap ${lsize} ${bold}`}>{str1}</div>
-        <div id="animation1" className={`dood whitespace-nowrap ${smSize} ${bold} text-red-500`}>{str2}</div>
-      </div>
+    <div className="font-inter">
+      <div className={`whitespace-nowrap ${big}`}>{str1}</div>
+      <div className={`whitespace-nowrap ${small} text-red-500`}>{str2}</div>
     </div>
   );
 };

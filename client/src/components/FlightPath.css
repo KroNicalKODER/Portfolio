@@ -1,0 +1,43 @@
+/* Dashes drift along the orbit like a moving trail. */
+.flight-dash {
+  stroke-dasharray: 2 10;
+  animation: flight-dash 1.2s linear infinite;
+}
+@keyframes flight-dash {
+  to {
+    stroke-dashoffset: -12;
+  }
+}
+
+.planet-spin {
+  animation: planet-rot 60s linear infinite;
+}
+@keyframes planet-rot {
+  to {
+    rotate: 360deg;
+  }
+}
+
+.planet-active {
+  filter: drop-shadow(0 0 22px rgba(167, 139, 250, 0.65));
+}
+
+/* Expanding ring on the current job's planet. */
+.planet-ping {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px solid rgba(74, 222, 128, 0.7);
+  animation: planet-ping 2.4s ease-out infinite;
+  pointer-events: none;
+}
+@keyframes planet-ping {
+  from {
+    transform: scale(0.85);
+    opacity: 0.9;
+  }
+  to {
+    transform: scale(1.45);
+    opacity: 0;
+  }
+}
