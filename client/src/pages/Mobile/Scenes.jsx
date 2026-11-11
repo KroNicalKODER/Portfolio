@@ -182,7 +182,7 @@ export const SkillsScene = () => {
         ))}
       </Rise>
       <div className="flex-1 flex items-center justify-center min-h-[22rem]">
-        <SkillPlanet key={active.id} items={active.items} label={active.label} size={264} radius={150} dot={48} />
+        <SkillPlanet items={active.items} label={active.label} size={264} radius={150} dot={48} />
       </div>
       <Rise className="text-center font-inter text-[0.65rem] text-gray-400">Tap a logo to name it</Rise>
     </Scene>

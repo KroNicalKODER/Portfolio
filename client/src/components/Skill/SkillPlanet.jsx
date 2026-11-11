@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import './SkillPlanet.css';
 
@@ -12,15 +12,25 @@ const SkillPlanet = ({ items, label, size = 450, radius = 175, dot = 56 }) => {
   const step = 360 / items.length;
   const compact = size < 350;
 
+  // New category → clear any logo name left over from the previous one.
+  useEffect(() => setHovered(null), [label]);
+
   return (
     <motion.div
       initial={{ opacity: 0, x: 200 }}
       animate={{ opacity: 1, x: 0, transition: { duration: 1 } }}
-      exit={{ x: 100, opacity: 0 }}
       className="skill-planet-wrapper h-full"
     >
       <div className="skill-planet-container">
         <div className="skill-planet" style={{ width: size, height: size, '--dot': `${dot}px` }}>
+          {/* keyed by category: switching swaps the whole ring at once, so it can never lag behind */}
+          <motion.div
+            key={label}
+            className="absolute inset-0 flex items-center justify-center"
+            initial={{ opacity: 0, scale: 0.85 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.35, ease: 'easeOut' }}
+          >
           {items.map((item, i) => {
             const angle = i * step;
             const url = item.logo ? logoUrl(item.logo) : null;
@@ -46,6 +56,7 @@ const SkillPlanet = ({ items, label, size = 450, radius = 175, dot = 56 }) => {
               </span>
             );
           })}
+          </motion.div>
         </div>
         <div className="skill-planet-center font-inter">
           <div className={`tracking-[0.3em] text-cyan-300/80 ${compact ? 'text-[0.55rem]' : 'text-[0.65rem]'}`}>{label}</div>

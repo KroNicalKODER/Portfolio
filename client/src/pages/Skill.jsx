@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
 import SkillPlanet from '../components/Skill/SkillPlanet.jsx';
@@ -59,9 +59,7 @@ const Skill = () => {
             animate={{ x: [500, 0], y: [0, 0], opacity: 1 }}
             transition={{ duration: 2, type: 'spring', ease: 'linear' }}
           >
-            <AnimatePresence mode="wait">
-              <SkillPlanet key={active.id} items={active.items} label={active.label} />
-            </AnimatePresence>
+            <SkillPlanet items={active.items} label={active.label} />
           </motion.div>
         </motion.div>
       </motion.div>
