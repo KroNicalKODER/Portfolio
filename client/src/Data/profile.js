@@ -35,21 +35,20 @@ export const experience = [
     period: 'Jun 2025 – Present',
     // Summary under the orbit, left → right (Platform is the core, in the middle).
     highlights: [
-      { value: 'FluxNova', label: 'Orchestration', sub: 'Spring Boot · Kafka · Security · JWKS' },
-      { value: 'Platform', label: 'Platform team', sub: 'Python services · Spring Boot services · security' },
-      { value: 'Power Automate', label: 'Automation', sub: 'FastAPI service · ownership · security' },
+      { value: 'FluxNova', label: 'Orchestration', sub: 'Open source · Spring Boot · Kafka' },
+      { value: 'Platform', label: 'Platform team', sub: 'Python services · Spring Boot services' },
+      { value: 'Power Automate', label: 'Automation', sub: 'FastAPI service · ownership' },
     ],
     // Full log overlay: one flat list.
     points: [
-      'Own the platform services I built end to end: design, release management, PR reviews, and primary point of contact for teams building on them.',
+      'Contributing in the platform services: design, release management, PR reviews, and a point of contact for teams building on them.',
       'Python (FastAPI) services on MongoDB, reused across teams. MongoDB schema and index design; co-built and maintain the shared MongoDB wrapper.',
-      'Spring Boot security library: SSO-backed JWT and certificate/CN-based service-to-service auth.',
+      'Built a shared security library and signing-key service for service-to-service authentication, reused across platform services.',
       'About 5x backend throughput by replacing synchronous auth calls and adding in-server caching and concurrent execution. Verified with JMeter and Locust.',
-      'Contributing to FluxNova (Java/Spring) workflow orchestration, including its bill of materials (BOM), with Spring Boot services for Kafka messaging, security and JWKS.',
-      'Designed a contract-based messaging abstraction over Kafka: teams swap brokers (Kafka, SQS, RabbitMQ) without code changes. Offset management, message peeking and starving-message handling. In production.',
-      'JWKS servers issuing RS256 keys backed by HashiCorp Vault.',
-      'Own a FastAPI service for Microsoft Power Automate end to end.',
-      'Microsoft Graph mail integration with OAuth 2.0 and webhooks.',
+      'Contributing to FluxNova, the FINOS open-source workflow orchestration engine (Java/Spring), including its bill of materials (BOM).',
+      'Designed a contract-based messaging abstraction over Kafka: teams swap message brokers without code changes. Offset management, message peeking and starving-message handling. In production.',
+      'Own an enterprise workflow-automation integration service (FastAPI) end to end.',
+      'Built an email integration over OAuth 2.0 and webhooks.',
       'Applied Saga orchestration to multi-step workflows; led design discussions on idempotency, race conditions and dual writes.'
     ],
   },
