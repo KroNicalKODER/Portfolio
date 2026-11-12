@@ -39,8 +39,6 @@ const Coverflow = ({ items, compact = false, keyboard = true, initial = 0 }) => 
     return x;
   };
 
-  const p = items[active];
-
   return (
     <div className="flex flex-col items-center w-full select-none">
       <motion.div
@@ -87,27 +85,37 @@ const Coverflow = ({ items, compact = false, keyboard = true, initial = 0 }) => 
         })}
       </motion.div>
 
-      {/* details of the centred project */}
-      <div className={`w-full text-center font-inter ${compact ? 'mt-4 px-6 min-h-[7.5rem]' : 'mt-6 max-w-[30rem] min-h-[8.5rem]'}`}>
-          <motion.div
-            key={p.slug}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.25 }}
-          >
-            <h3 className={`font-extrabold ${compact ? 'text-base' : 'text-2xl'}`}>{p.title}</h3>
-            <p className={`mt-1 text-gray-300 leading-snug ${compact ? 'text-[0.72rem]' : 'text-sm'}`}>{p.message}</p>
-            <div className={`mt-2 font-mono text-cyan-300/80 ${compact ? 'text-[0.55rem]' : 'text-[0.65rem]'}`}>{p.extras}</div>
-            <div className="mt-3 text-xs font-semibold">
-              {p.link ? (
-                <a href={p.link} target="_blank" rel="noreferrer" className="text-green-400 hover:text-green-300 underline-offset-4 hover:underline">
-                  View on GitHub ↗
-                </a>
-              ) : (
-                <span className="text-gray-500">Private build</span>
-              )}
-            </div>
-          </motion.div>
+      {/* details of the centred project. Every project's details sit in the same grid cell
+          (only the active one visible), so the block always has the tallest one's height and
+          the page never changes length when you switch projects. */}
+      <div className={`grid w-full text-center font-inter ${compact ? 'mt-4 px-6' : 'mt-6 max-w-[30rem]'}`}>
+        {items.map((item, i) => {
+          const on = i === active;
+          return (
+            <motion.div
+              key={item.slug}
+              aria-hidden={!on}
+              initial={false}
+              animate={{ opacity: on ? 1 : 0, y: on ? 0 : 10 }}
+              transition={{ duration: 0.25 }}
+              style={{ gridArea: '1 / 1', visibility: on ? 'visible' : 'hidden', pointerEvents: on ? 'auto' : 'none' }}
+              data-active={on || undefined}
+            >
+              <h3 className={`font-extrabold ${compact ? 'text-base' : 'text-2xl'}`}>{item.title}</h3>
+              <p className={`mt-1 text-gray-300 leading-snug ${compact ? 'text-[0.72rem]' : 'text-sm'}`}>{item.message}</p>
+              <div className={`mt-2 font-mono text-cyan-300/80 ${compact ? 'text-[0.55rem]' : 'text-[0.65rem]'}`}>{item.extras}</div>
+              <div className="mt-3 text-xs font-semibold">
+                {item.link ? (
+                  <a href={item.link} target="_blank" rel="noreferrer" className="text-green-400 hover:text-green-300 underline-offset-4 hover:underline">
+                    View on GitHub ↗
+                  </a>
+                ) : (
+                  <span className="text-gray-500">Private build</span>
+                )}
+              </div>
+            </motion.div>
+          );
+        })}
       </div>
 
       {/* controls */}

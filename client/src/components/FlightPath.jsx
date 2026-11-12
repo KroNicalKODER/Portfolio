@@ -165,12 +165,17 @@ const FlightPath = ({ compact = false }) => {
       </div>
 
       {/* ---- mission log: headline stats, full log on demand ---- */}
-      <div className={`relative ${compact ? 'mt-12' : 'mt-[clamp(2.5rem,9vh,5rem)] mx-auto max-w-[56rem]'}`}>
+      <div className={`relative grid ${compact ? 'mt-12' : 'mt-[clamp(2.5rem,9vh,5rem)] mx-auto max-w-[56rem]'}`}>
+          {stops.map((job, idx) => {
+            const on = idx === selected;
+            return (
           <motion.div
             key={job.slug}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.35 }}
+            aria-hidden={!on}
+            initial={false}
+            animate={{ opacity: on ? 1 : 0, y: on ? 0 : 12 }}
+            transition={{ duration: 0.35, delay: on ? 0.1 : 0 }}
+            style={{ gridArea: '1 / 1', pointerEvents: on ? 'auto' : 'none', visibility: on ? 'visible' : 'hidden' }}
             className={`text-center ${compact ? 'px-3 py-4' : 'px-8 py-2'}`}
           >
             <div className={`font-mono tracking-[0.25em] ${compact ? 'text-[0.55rem]' : 'text-[0.65rem]'}`}>
@@ -195,9 +200,9 @@ const FlightPath = ({ compact = false }) => {
                 {job.highlights.map((h, j) => (
                   <motion.div
                     key={h.label}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.15 + j * 0.1 }}
+                    initial={false}
+                    animate={{ opacity: on ? 1 : 0, y: on ? 0 : 10 }}
+                    transition={{ delay: on ? 0.15 + j * 0.1 : 0 }}
                     className={compact ? 'px-1.5' : 'px-4'}
                   >
                     <div
@@ -216,6 +221,8 @@ const FlightPath = ({ compact = false }) => {
               </div>
 
           </motion.div>
+            );
+          })}
       </div>
 
       <LogSheet job={job} open={expanded} onClose={closeLog} compact={compact} />

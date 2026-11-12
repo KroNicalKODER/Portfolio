@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 import { SCREENS } from '../Data/profile';
 import Starfield from '../components/Starfield.jsx';
@@ -40,7 +40,27 @@ const Mobile = () => {
   }, []);
 
   const isLast = active === ids.length - 1;
-  const jump = (i) => scroller.current.querySelector(`#${ids[i]}`)?.scrollIntoView({ behavior: 'smooth' });
+
+  // Programmatic jumps (Next button, dots, name) pause snapping while the page scrolls.
+  // Safari otherwise tends to cancel or redirect a smooth scroll inside a mandatory-snap container.
+  const restoreSnap = useRef(null);
+  const jump = (i) => {
+    const m = scroller.current;
+    const el = m?.querySelector(`#${ids[i]}`);
+    if (!el) return;
+    setActive(i);
+    m.style.scrollSnapType = 'none';
+    m.scrollTo({ top: el.offsetTop, behavior: 'smooth' });
+    clearTimeout(restoreSnap.current);
+    const done = () => {
+      clearTimeout(restoreSnap.current);
+      m.removeEventListener('scrollend', done);
+      m.style.scrollSnapType = '';
+    };
+    m.addEventListener('scrollend', done, { once: true });
+    restoreSnap.current = setTimeout(done, 1200); // browsers without scrollend
+  };
+  useEffect(() => () => clearTimeout(restoreSnap.current), []);
 
   return (
     <div className="relative h-[100svh] supports-[height:100dvh]:h-[100dvh] bg-black text-white font-inter">
@@ -62,36 +82,38 @@ const Mobile = () => {
 
       {/* Next screen (or back to top on the last one) */}
       <div className="pointer-events-none absolute inset-x-0 bottom-[3.75rem] z-40 flex justify-center">
-      <AnimatePresence mode="popLayout" initial={false}>
-        <motion.button
-          key={isLast ? 'top' : `next-${active}`}
+        {/* One permanent button; only its label changes (no exit animations that could leave a stale copy). */}
+        <button
           type="button"
           onClick={() => jump(isLast ? 0 : active + 1)}
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -8 }}
-          transition={{ duration: 0.25 }}
-          className="pointer-events-auto flex items-center gap-1.5 rounded-full border border-cyan-300/40 bg-black/60 backdrop-blur-sm px-3.5 py-1.5 text-[0.65rem] font-bold tracking-wide text-cyan-200 active:scale-95"
+          className="pointer-events-auto flex items-center gap-1.5 rounded-full border border-cyan-300/40 bg-black/60 backdrop-blur-sm px-3.5 py-1.5 text-[0.65rem] font-bold tracking-wide text-cyan-200 active:scale-95 transition-transform"
           aria-label={isLast ? 'Back to top' : `Next: ${SCREENS[active + 1]}`}
         >
-          {isLast ? (
-            <>
-              Back to top <span className="text-sm leading-none">↑</span>
-            </>
-          ) : (
-            <>
-              Next · <span className="text-white">{SCREENS[active + 1]}</span>
-              <motion.span
-                className="text-sm leading-none"
-                animate={{ y: [0, 3, 0] }}
-                transition={{ duration: 1.2, repeat: Infinity, ease: 'easeInOut' }}
-              >
-                ↓
-              </motion.span>
-            </>
-          )}
-        </motion.button>
-      </AnimatePresence>
+          <motion.span
+            key={isLast ? 'top' : active}
+            initial={{ opacity: 0, y: 4 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.25 }}
+            className="flex items-center gap-1.5"
+          >
+            {isLast ? (
+              <>
+                Back to top <span className="text-sm leading-none">↑</span>
+              </>
+            ) : (
+              <>
+                Next · <span className="text-white">{SCREENS[active + 1]}</span>
+                <motion.span
+                  className="text-sm leading-none"
+                  animate={{ y: [0, 3, 0] }}
+                  transition={{ duration: 1.2, repeat: Infinity, ease: 'easeInOut' }}
+                >
+                  ↓
+                </motion.span>
+              </>
+            )}
+          </motion.span>
+        </button>
       </div>
 
       <nav className="absolute inset-x-0 bottom-0 z-40 flex items-center justify-center gap-3 h-14 bg-gradient-to-t from-black/90 to-transparent">
