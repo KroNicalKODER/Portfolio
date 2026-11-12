@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" fill="none">
+  <!-- Event streaming: producer → topic log → consumers -->
+  <defs>
+    <filter id="g" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.6" result="b" />
+      <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
+    </filter>
+  </defs>
+  <g stroke="#4ff7ff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" filter="url(#g)">
+    <circle cx="13" cy="40" r="6" />
+    <path d="M19 40h7" />
+    <path d="M23 36.5 26.5 40 23 43.5" />
+    <rect x="29" y="31" width="24" height="18" rx="3" />
+    <path d="M35 31v18M41 31v18M47 31v18" />
+    <path d="M53 37l9-11M53 43l9 11" />
+    <circle cx="67" cy="22" r="6" />
+    <circle cx="67" cy="58" r="6" />
+  </g>
+</svg>

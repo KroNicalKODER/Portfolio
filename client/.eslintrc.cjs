@@ -12,6 +12,10 @@ module.exports = {
   settings: { react: { version: '18.2' } },
   plugins: ['react-refresh'],
   rules: {
+    'react/prop-types': 'off',
+    'no-unused-vars': ['error', { varsIgnorePattern: '^React$' }],
+    'react/no-unknown-property': ['error', { ignore: ['attach', 'count', 'array', 'itemSize', 'vertexColors', 'transparent', 'sizeAttenuation', 'depthWrite', 'alphaTest', 'map', 'intensity', 'position', 'rotation', 'scale', 'object', 'args', 'castShadow'] }],
+    'react/no-unescaped-entities': 'off',
     'react-refresh/only-export-components': [
       'warn',
       { allowConstantExport: true },

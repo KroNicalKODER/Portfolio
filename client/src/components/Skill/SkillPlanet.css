@@ -1,0 +1,75 @@
+.skill-planet-wrapper {
+  display: flex;
+}
+
+.skill-planet-container {
+  display: flex;
+  position: relative;
+  height: inherit;
+  width: inherit;
+  justify-content: center;
+  align-items: center;
+}
+
+.skill-planet {
+  background-image: url('./images/planet-2.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 0%;
+  width: var(--planet, 450px);
+  height: var(--planet, 450px);
+  border-radius: 50%;
+  margin: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  animation: planet-spin 80s linear infinite;
+}
+
+.skill-orbit {
+  position: absolute;
+  width: 0;
+  height: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Counter-spin so icons stay upright while the planet rotates. */
+.skill-dot {
+  flex: none; /* the orbit anchor is 0×0; don't let flex squash the dot */
+  width: var(--dot, 56px);
+  height: var(--dot, 56px);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(10, 10, 20, 0.85);
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 12px rgba(0, 255, 224, 0.15);
+  color: #fff;
+  cursor: default;
+  animation: planet-spin 80s linear infinite reverse;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.skill-dot-active {
+  transform: scale(1.2);
+  border-color: #00ffe0;
+  box-shadow: 0 0 18px rgba(0, 255, 224, 0.6);
+}
+
+.skill-planet-center {
+  position: absolute;
+  text-align: center;
+  color: #fff;
+  pointer-events: none;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9);
+}
+
+@keyframes planet-spin {
+  to {
+    rotate: 360deg;
+  }
+}

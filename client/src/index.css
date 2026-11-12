@@ -17,3 +17,24 @@
 img {
     pointer-events: none;
 }
+/* Respect the OS "reduce motion" setting for CSS animations (planets, orbits, bubbles). */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* The page itself is black too, so nothing white shows when a mobile browser's
+   toolbar collapses/expands or the page bounces on overscroll. */
+html,
+body,
+#root {
+    background-color: #000;
+}
+body {
+    overscroll-behavior: none;
+}

@@ -4,7 +4,7 @@ import bluePlanet from '../assets/blue.png'
 import planetMan from '../assets/planet+astraunut.png'
 import rocketMan from '../assets/astraunut on rocket.png'
 import Bubble from '../components/Animations/Bubble'
-// import RandomText from '../components/Animations/RandomText.jsx'
+import RandomText from '../components/Animations/RandomText.jsx'
 import { Link } from 'react-router-dom'
 
 const Overview = () => {
@@ -81,7 +81,7 @@ const Overview = () => {
           exit={{ x: -1000, opacity: 0 }}
           transition={{ duration: 2, type: "spring" }}
         className='-translate-x-12 w-[130%]'>
-        {/* <RandomText/> */}
+        <RandomText/>
         </motion.div>
         
         <Link to={'/email'}>

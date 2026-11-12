@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import UFOModel from '../assets/Models/UFO/ufo.glb'
 import { useGLTF } from '@react-three/drei'
 
-const UFO = () => {
+const Ufo = () => {
     const {scene : model} = useGLTF(UFOModel)
     const ufoRef = useRef()
   return (
@@ -12,4 +12,4 @@ const UFO = () => {
   )
 }
 
-export default UFO
+export default Ufo
